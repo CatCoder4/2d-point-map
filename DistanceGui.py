@@ -3,7 +3,8 @@ from functools import partial
 import distanceCalc
 import DistanceSimiluate
 
-def showCordinates(var, elementList):
+def showCordinates(var, elementList, otherCheckboxChecked):
+    if otherCheckboxChecked.get(): return 0
     if var.get() is True:
         for index, item in enumerate(elementList):
             if index == 4:
@@ -28,7 +29,8 @@ def calculateCords(xentry, yentry):
         E, ae, be, ce = distanceCalc.cordCalc(A, B, C, E)
         DistanceSimiluate.Simulate(600, 500, B, C, E, ae, be, ce)
 
-def showDistance(var, elementList):
+def showDistance(var, elementList, otherCheckboxChecked):
+    if otherCheckboxChecked.get(): return 0
     if var.get() is True:
         for index, item in enumerate(elementList):
             if index == 6:
@@ -50,7 +52,7 @@ def calculateDist(aeE, beE, ceE):
     be = float(beE.get())
     ce = float(ceE.get())
     
-    if ae.get() == '' or be.get() == '' or ce.get() == '':
+    if aeE.get() == '' or beE.get() == '' or ceE.get() == '':
         print("you must type something into the inputs")
     else:
         E = distanceCalc.distCalc(B, C, ae, be, ce)

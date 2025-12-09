@@ -25,12 +25,16 @@ def main():
     calcDist = partial(calculateDist, aeE=aeEntry, beE=beEntry, ceE=ceEntry)
     submitDist = Button(window, text="submit", font=("helvetica, 25"), relief=SUNKEN, bd=5, command=calcDist)
 
+    # checkbox variables
     cordinateMode = BooleanVar()
+    DistanceMode = BooleanVar()
+
     calcCords = partial(calculateCords, xentry=Xentry, yentry=Yentry)
     submitXandy = Button(window, text="submit", font=("helvetica, 25"), relief=SUNKEN, bd=5, command=calcCords)
-    showcord = partial(showCordinates, var=cordinateMode, elementList=[Xentry, Xlabel, Yentry , Ylabel, submitXandy])
-    DistanceMode = BooleanVar()
-    showdist = partial(showDistance, var=DistanceMode, elementList=[aeEntry, label1, beEntry, label2, ceEntry, label3, submitDist])
+    # gui show partial functions
+
+    showcord = partial(showCordinates, var=cordinateMode, elementList=[Xentry, Xlabel, Yentry , Ylabel, submitXandy], otherCheckboxChecked=DistanceMode)
+    showdist = partial(showDistance, var=DistanceMode, elementList=[aeEntry, label1, beEntry, label2, ceEntry, label3, submitDist], otherCheckboxChecked=cordinateMode)
 
 
     # check buttons
